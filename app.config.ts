@@ -5,4 +5,4 @@ export default defineAppConfig({
       'user-read-recently-played',
     ],
   },
-})
+});

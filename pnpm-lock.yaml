@@ -4,13 +4,18 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+patchedDependencies:
+  '@spotify/web-api-ts-sdk@1.2.0':
+    hash: myljc7dnaky6ltcdz25dd235cm
+    path: patches/@spotify__web-api-ts-sdk@1.2.0.patch
+
 dependencies:
   '@nuxtjs/tailwindcss':
     specifier: ^6.12.0
     version: 6.12.0
   '@spotify/web-api-ts-sdk':
     specifier: ^1.2.0
-    version: 1.2.0
+    version: 1.2.0(patch_hash=myljc7dnaky6ltcdz25dd235cm)
   nuxt:
     specifier: ^3.11.2
     version: 3.11.2(@unocss/reset@0.59.4)(eslint@8.57.0)(floating-vue@5.2.2)(typescript@5.4.5)(unocss@0.59.4)(vite@5.2.10)
@@ -1703,9 +1708,10 @@ packages:
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
 
-  /@spotify/web-api-ts-sdk@1.2.0:
+  /@spotify/web-api-ts-sdk@1.2.0(patch_hash=myljc7dnaky6ltcdz25dd235cm):
     resolution: {integrity: sha512-JUaebva3Ohwo5I5tuTqyW/FKGOMbb40YevJMySAOINRxP7qQ/AMjBzfJx0zeO6yS+wAPfQSoGNsZaUggHw8vsA==}
     dev: false
+    patched: true
 
   /@stylistic/eslint-plugin-js@1.8.0(eslint@8.57.0):
     resolution: {integrity: sha512-jdvnzt+pZPg8TfclZlTZPiUbbima93ylvQ+wNgHLNmup3obY6heQvgewSu9i2CfS61BnRByv+F9fxQLPoNeHag==}

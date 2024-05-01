@@ -1,6 +1,11 @@
 // @ts-check
-import withNuxt from './.nuxt/eslint.config.mjs'
+import withNuxt from './.nuxt/eslint.config.mjs';
 
 export default withNuxt(
-  // Your custom configs here
-)
+  {
+    name: 'access-42-audit',
+    rules: {
+      '@stylistic/semi': ['error', 'always'],
+    },
+  },
+);

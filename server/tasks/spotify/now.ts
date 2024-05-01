@@ -4,13 +4,12 @@ export default defineTask({
     description: 'Returns currently playing song',
   },
   async run() {
-    const accessToken = await getCachedAccessToken()
-    const spotify = await useSpotify()
+    const spotify = await useSpotify();
 
-    const playingNow = await spotify.player.getCurrentlyPlayingTrack()
+    const playingNow = await spotify.player.getCurrentlyPlayingTrack();
 
     return {
       result: playingNow,
-    }
+    };
   },
-})
+});

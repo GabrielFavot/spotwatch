@@ -13,7 +13,7 @@
 </template>
 
 <script lang="ts" setup>
-const playlistId = '5UXKoJlVp8icWqc9p7Cv0t'
+const playlistId = '5UXKoJlVp8icWqc9p7Cv0t';
 
-const { data: tracks } = await useLazyFetch(`/api/playlists/${playlistId}`)
+const { data: tracks } = await useLazyFetch(`/api/playlists/${playlistId}`);
 </script>

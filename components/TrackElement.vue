@@ -10,7 +10,10 @@
       >
 
       <div class="absolute bottom-0 b-0 px-4 py-3 hidden group-hover:block">
-        <a :href="trackUrl" class="text-green-400 cursor-pointer text-lg">
+        <a
+          :href="trackUrl"
+          class="text-green-400 cursor-pointer text-lg"
+        >
           <Icon name="logos:spotify-icon" />
         </a>
         <div>
@@ -27,17 +30,17 @@
 </template>
 
 <script lang="ts" setup>
-import type { Track } from '@spotify/web-api-ts-sdk'
+import type { Track } from '@spotify/web-api-ts-sdk';
 
 const props = defineProps<{
   track: Track
-}>()
+}>();
 
-const albumImageUrl = computed(() => props.track.album.images[0].url)
+const albumImageUrl = computed(() => props.track.album.images[0].url);
 const trackFullName = computed(
   () => `${props.track.artists[0].name} - ${props.track.name}`,
-)
-const trackUrl = computed(() => props.track.external_urls.spotify)
+);
+const trackUrl = computed(() => props.track.external_urls.spotify);
 </script>
 
 <style></style>
