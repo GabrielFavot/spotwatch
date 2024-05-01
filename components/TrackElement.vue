@@ -1,13 +1,13 @@
 <template>
   <div
-    class="shadow-md duration-500 hover:scale-105 hover:shadow-xl group rounded"
+    class="shadow-md relative duration-500 hover:scale-105 hover:shadow-xl group rounded"
   >
     <div class="bg-gradient-to-b from-gray-300 to-gray-700">
       <img
         :src="albumImageUrl"
         :alt="trackFullName"
         class="group-hover:mix-blend-multiply"
-      />
+      >
 
       <div class="absolute bottom-0 b-0 px-4 py-3 hidden group-hover:block">
         <a :href="trackUrl" class="text-green-400 cursor-pointer text-lg">
@@ -27,17 +27,17 @@
 </template>
 
 <script lang="ts" setup>
-import type { Track } from '@spotify/web-api-ts-sdk';
+import type { Track } from '@spotify/web-api-ts-sdk'
 
 const props = defineProps<{
-  track: Track;
-}>();
+  track: Track
+}>()
 
-const albumImageUrl = computed(() => props.track.album.images[0].url);
+const albumImageUrl = computed(() => props.track.album.images[0].url)
 const trackFullName = computed(
-  () => `${props.track.artists[0].name} - ${props.track.name}`
-);
-const trackUrl = computed(() => props.track.external_urls.spotify);
+  () => `${props.track.artists[0].name} - ${props.track.name}`,
+)
+const trackUrl = computed(() => props.track.external_urls.spotify)
 </script>
 
 <style></style>
