@@ -4,19 +4,26 @@ export default defineNuxtConfig({
   postcss: {},
   runtimeConfig: {
     public: {
-      clientId: process.env.NUXT_PUBLIC_SPOTIFY_CLIENT_ID,
-      clientSecret: process.env.NUXT_PUBLIC_SPOTIFY_CLIENT_SECRET,
+      hostname: 'http://localhost:3000',
+    },
+    spotify: {
+      redirectUri: '/api/auth/callback',
+      clientId: '',
+      clientSecret: '',
+      refreshToken: '',
     },
   },
 
-  modules: [
-    'nuxt-icon',
-    '@nuxtjs/tailwindcss',
-    '@nuxt/eslint',
-  ],
+  nitro: {
+    experimental: {
+      tasks: true,
+    },
+  },
+
+  modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
   eslint: {
     config: {
       stylistic: true,
     },
   },
-})
+});
