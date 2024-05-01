@@ -1,5 +1,4 @@
 import { z } from 'zod'
-import { getCachedAccessToken, useSpotify } from '~/server/composables/spotify'
 
 const paramsSchema = z.object({
   playlistId: z.string(),
@@ -7,7 +6,7 @@ const paramsSchema = z.object({
 
 export default defineEventHandler(async (event) => {
   const { playlistId } = await getValidatedRouterParams(event, paramsSchema.parse)
-  const spotify = useSpotify(await getCachedAccessToken())
+  const spotify = await useSpotify()
 
   return spotify.playlists.getPlaylistItems(playlistId, 'FR', undefined)
 })

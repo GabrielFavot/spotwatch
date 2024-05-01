@@ -1,5 +1,3 @@
-import { getCachedAccessToken, useSpotify } from '~/server/composables/spotify'
-
 export default defineTask({
   meta: {
     name: 'spotify:now',
@@ -7,7 +5,7 @@ export default defineTask({
   },
   async run() {
     const accessToken = await getCachedAccessToken()
-    const spotify = useSpotify(accessToken)
+    const spotify = await useSpotify()
 
     const playingNow = await spotify.player.getCurrentlyPlayingTrack()
 

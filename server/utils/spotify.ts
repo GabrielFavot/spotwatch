@@ -2,9 +2,10 @@ import { type AccessToken, SpotifyApi, ProvidedAccessTokenStrategy, emptyAccessT
 
 const storageKey = 'spotify_access_token'
 
-export function useSpotify(accessToken: AccessToken) {
+export async function useSpotify() {
   const { clientId, clientSecret } = useRuntimeConfig().spotify
   const storage = useStorage()
+  const accessToken = await getCachedAccessToken()
 
   const refresh = async (clientId: string, accessToken: AccessToken) => {
     const response = await $fetch<AccessToken>('https://accounts.spotify.com/api/token', {
