@@ -1,13 +1,38 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  postcss: {},
   runtimeConfig: {
     public: {
-      clientId: process.env.NUXT_PUBLIC_SPOTIFY_CLIENT_ID,
-      clientSecret: process.env.NUXT_PUBLIC_SPOTIFY_CLIENT_SECRET,
+      hostname: 'http://localhost:3000',
+    },
+    spotify: {
+      redirectUri: '/api/auth/callback',
+      clientId: '',
+      clientSecret: '',
+      refreshToken: '',
     },
   },
 
-  modules: ['nuxt-icon', '@nuxtjs/tailwindcss'],
+  nitro: {
+    experimental: {
+      tasks: true,
+    },
+    devStorage: {
+      default: {
+        driver: 'memory',
+      },
+    },
+    storage: {
+      default: {
+        driver: 'netlifyBlobs',
+      },
+    },
+  },
+
+  modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
 });
