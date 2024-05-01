@@ -18,6 +18,16 @@ export default defineNuxtConfig({
     experimental: {
       tasks: true,
     },
+    devStorage: {
+      default: {
+        driver: 'memory',
+      }
+    },
+    storage: {
+      default: {
+        driver: 'netlifyBlobs',
+      }
+    }
   },
 
   modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
