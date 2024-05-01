@@ -16,7 +16,7 @@ const config = useRuntimeConfig()
 
 const api = SpotifyApi.withClientCredentials(
   config.public.clientId,
-  config.clientId
+  config.public.clientSecret
 );
 
 const tracks = ref();

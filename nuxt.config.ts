@@ -1,14 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ['@fortawesome/fontawesome-svg-core/styles.css'],
   postcss: {},
   runtimeConfig: {
-    spotify: {
-      clientId: '',
-      clientSecret: '',
+    public: {
+      clientId: process.env.NUXT_SPOTIFY_CLIENT_ID,
+      clientSecret: process.env.NUXT_SPOTIFY_CLIENT_SECRET,
     }
   },
 
-  modules: ['@nuxtjs/tailwindcss'],
+  modules: ['nuxt-icon', '@nuxtjs/tailwindcss'],
 });

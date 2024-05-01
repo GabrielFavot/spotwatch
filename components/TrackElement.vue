@@ -11,7 +11,7 @@
 
       <div class="absolute bottom-0 b-0 px-4 py-3 hidden group-hover:block">
         <a :href="trackUrl" class="text-green-400 cursor-pointer text-lg">
-          <font-awesome-icon icon="fa-brands fa-spotify"></font-awesome-icon>
+          <Icon name="logos:spotify-icon" />
         </a>
         <div>
           <span class="mr-3 uppercase text-xs text-gray-400">
