@@ -20,5 +20,10 @@
   "devDependencies": {
     "@nuxt/eslint": "^0.3.10",
     "nuxt-icon": "^0.6.10"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "@spotify/web-api-ts-sdk@1.2.0": "patches/@spotify__web-api-ts-sdk@1.2.0.patch"
+    }
   }
 }
