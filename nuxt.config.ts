@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  postcss: {},
   runtimeConfig: {
     public: {
       hostname: 'http://localhost:3000',
@@ -21,13 +20,13 @@ export default defineNuxtConfig({
     devStorage: {
       default: {
         driver: 'memory',
-      }
+      },
     },
     storage: {
       default: {
         driver: 'netlifyBlobs',
-      }
-    }
+      },
+    },
   },
 
   modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
