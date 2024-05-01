@@ -9,5 +9,14 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['nuxt-icon', '@nuxtjs/tailwindcss'],
-});
+  modules: [
+    'nuxt-icon',
+    '@nuxtjs/tailwindcss',
+    '@nuxt/eslint',
+  ],
+  eslint: {
+    config: {
+      stylistic: true,
+    },
+  },
+})
