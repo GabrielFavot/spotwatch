@@ -1,12 +1,12 @@
 <template>
   <div
-    class="shadow-md duration-500 hover:scale-105 hover:shadow-xl group rounded"
+    class="shadow-md relative hover:shadow-xl group rounded"
   >
-    <div class="bg-gradient-to-b from-gray-300 to-gray-700">
+    <div class="bg-gradient-to-b from-gray-300 to-gray-700 overflow-hidden">
       <img
         :src="albumImageUrl"
         :alt="trackFullName"
-        class="group-hover:mix-blend-multiply"
+        class="group-hover:mix-blend-multiply group-hover:scale-105 duration-500"
       />
 
       <div class="absolute bottom-0 b-0 px-4 py-3 hidden group-hover:block">
@@ -39,5 +39,3 @@ const trackFullName = computed(
 );
 const trackUrl = computed(() => props.track.external_urls.spotify);
 </script>
-
-<style></style>
