@@ -1,0 +1,39 @@
+diff --git a/dist/mjs/index.d.ts b/dist/mjs/index.d.ts
+index fbf77964cdd33a0bac5c37ad35e2b1af18d95cd4..cb9dd46920753d3bcd472718997ecc2722e46503 100644
+--- a/dist/mjs/index.d.ts
++++ b/dist/mjs/index.d.ts
+@@ -1,6 +1,7 @@
+ import { SpotifyApi } from "./SpotifyApi.js";
+ import AuthorizationCodeWithPKCEStrategy from "./auth/AuthorizationCodeWithPKCEStrategy.js";
+ import ClientCredentialsStrategy from "./auth/ClientCredentialsStrategy.js";
++import ProvidedAccessTokenStrategy from "./auth/ProvidedAccessTokenStrategy.js";
+ import IAuthStrategy from "./auth/IAuthStrategy.js";
+ import InMemoryCachingStrategy from "./caching/InMemoryCachingStrategy.js";
+ import LocalStorageCachingStrategy from "./caching/LocalStorageCachingStrategy.js";
+@@ -13,6 +14,6 @@ import DefaultResponseValidator from "./responsevalidation/DefaultResponseValida
+ import DefaultResponseDeserializer from "./serialization/DefaultResponseDeserializer.js";
+ import { Scopes } from "./Scopes.js";
+ import { emptyAccessToken } from "./auth/IAuthStrategy.js";
+-export { SpotifyApi, AuthorizationCodeWithPKCEStrategy, ClientCredentialsStrategy, InMemoryCachingStrategy, LocalStorageCachingStrategy, GenericCache, ConsoleLoggingErrorHandler, NoOpErrorHandler, DocumentLocationRedirectionStrategy, DefaultResponseValidator, DefaultResponseDeserializer, Scopes, emptyAccessToken };
++export { SpotifyApi, AuthorizationCodeWithPKCEStrategy, ClientCredentialsStrategy, ProvidedAccessTokenStrategy, InMemoryCachingStrategy, LocalStorageCachingStrategy, GenericCache, ConsoleLoggingErrorHandler, NoOpErrorHandler, DocumentLocationRedirectionStrategy, DefaultResponseValidator, DefaultResponseDeserializer, Scopes, emptyAccessToken };
+ export type * from "./types.js";
+ export type { IAuthStrategy, ICacheStore, };
+diff --git a/dist/mjs/index.js b/dist/mjs/index.js
+index b850ca13517ccfc7df23ea9655f26075c9d06e92..a97f6474adf533ed4e2798863140349079ab2fb5 100644
+--- a/dist/mjs/index.js
++++ b/dist/mjs/index.js
+@@ -1,6 +1,7 @@
+ import { SpotifyApi } from "./SpotifyApi.js";
+ import AuthorizationCodeWithPKCEStrategy from "./auth/AuthorizationCodeWithPKCEStrategy.js";
+ import ClientCredentialsStrategy from "./auth/ClientCredentialsStrategy.js";
++import ProvidedAccessTokenStrategy from "./auth/ProvidedAccessTokenStrategy.js";
+ import InMemoryCachingStrategy from "./caching/InMemoryCachingStrategy.js";
+ import LocalStorageCachingStrategy from "./caching/LocalStorageCachingStrategy.js";
+ import GenericCache from "./caching/GenericCache.js";
+@@ -11,5 +12,5 @@ import DefaultResponseValidator from "./responsevalidation/DefaultResponseValida
+ import DefaultResponseDeserializer from "./serialization/DefaultResponseDeserializer.js";
+ import { Scopes } from "./Scopes.js";
+ import { emptyAccessToken } from "./auth/IAuthStrategy.js";
+-export { SpotifyApi, AuthorizationCodeWithPKCEStrategy, ClientCredentialsStrategy, InMemoryCachingStrategy, LocalStorageCachingStrategy, GenericCache, ConsoleLoggingErrorHandler, NoOpErrorHandler, DocumentLocationRedirectionStrategy, DefaultResponseValidator, DefaultResponseDeserializer, Scopes, emptyAccessToken };
++export { SpotifyApi, AuthorizationCodeWithPKCEStrategy, ClientCredentialsStrategy, ProvidedAccessTokenStrategy, InMemoryCachingStrategy, LocalStorageCachingStrategy, GenericCache, ConsoleLoggingErrorHandler, NoOpErrorHandler, DocumentLocationRedirectionStrategy, DefaultResponseValidator, DefaultResponseDeserializer, Scopes, emptyAccessToken };
+ //# sourceMappingURL=index.js.map
