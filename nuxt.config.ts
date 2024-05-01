@@ -4,9 +4,9 @@ export default defineNuxtConfig({
   postcss: {},
   runtimeConfig: {
     public: {
-      clientId: process.env.NUXT_SPOTIFY_CLIENT_ID,
-      clientSecret: process.env.NUXT_SPOTIFY_CLIENT_SECRET,
-    }
+      clientId: process.env.NUXT_PUBLIC_SPOTIFY_CLIENT_ID,
+      clientSecret: process.env.NUXT_PUBLIC_SPOTIFY_CLIENT_SECRET,
+    },
   },
 
   modules: ['nuxt-icon', '@nuxtjs/tailwindcss'],
