@@ -9,12 +9,14 @@
         class="group-hover:mix-blend-multiply"
         sizes="640px md:504px lg:308 xl:295 2xl:420"
         loading="lazy"
+        @click="playAudio"
+        @mouseleave="pauseAudio"
       />
       <div class="absolute bottom-0 b-0 px-4 py-3 hidden group-hover:block">
-        <a
-          :href="trackUrl"
-          class="text-green-400 cursor-pointer text-lg"
-        >
+        <audio ref="audioPlayer" id="audio">
+          <source :src="props.track.preview_url" type="audio/mpeg"/>
+        </audio>
+        <a :href="trackUrl" class="text-green-400 cursor-pointer text-lg">
           <Icon name="logos:spotify-icon" />
         </a>
         <div>
@@ -34,14 +36,25 @@
 import type { Track } from '@spotify/web-api-ts-sdk';
 
 const props = defineProps<{
-  track: Track
+  track: Track;
 }>();
 
 const albumImageUrl = computed(() => props.track.album.images[0].url);
 const trackFullName = computed(
-  () => `${props.track.artists[0].name} - ${props.track.name}`,
+  () => `${props.track.artists[0].name} - ${props.track.name}`
 );
 const trackUrl = computed(() => props.track.external_urls.spotify);
+
+const audioPlayer = ref<HTMLAudioElement>();
+
+const playAudio = () => {
+  audioPlayer.value.play();
+};
+
+const pauseAudio = () => {
+  audioPlayer.value.pause();
+};
+
 </script>
 
 <style></style>
