@@ -13,6 +13,13 @@ export default defineNuxtConfig({
     },
   },
 
+  app: {
+    head: {
+      title: 'Spotify Grid',
+      link: [{ rel: 'icon', type: 'ico', href: '/favicon.ico' }],
+    },
+  },
+
   nitro: {
     experimental: {
       tasks: true,
@@ -29,10 +36,13 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxt/eslint'],
+  modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxt/image'],
   eslint: {
     config: {
       stylistic: true,
     },
+  },
+  image: {
+    domains: ['i.scdn.co'],
   },
 });

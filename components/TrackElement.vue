@@ -3,12 +3,13 @@
     class="shadow-md relative duration-500 hover:scale-105 hover:shadow-xl group rounded"
   >
     <div class="bg-gradient-to-b from-gray-300 to-gray-700">
-      <img
+      <NuxtImg
         :src="albumImageUrl"
         :alt="trackFullName"
         class="group-hover:mix-blend-multiply"
-      >
-
+        sizes="640px md:504px lg:308 xl:295 2xl:420"
+        loading="lazy"
+      />
       <div class="absolute bottom-0 b-0 px-4 py-3 hidden group-hover:block">
         <a
           :href="trackUrl"
