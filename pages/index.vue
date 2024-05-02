@@ -13,6 +13,5 @@
 </template>
 
 <script lang="ts" setup>
-
 const { data: tracks } = await useLazyFetch(`/api/me/history`);
 </script>

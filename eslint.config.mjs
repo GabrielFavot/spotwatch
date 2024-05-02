@@ -3,7 +3,7 @@ import withNuxt from './.nuxt/eslint.config.mjs';
 
 export default withNuxt(
   {
-    name: 'access-42-audit',
+    name: 'spotify-grid',
     rules: {
       '@stylistic/semi': ['error', 'always'],
     },
