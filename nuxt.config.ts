@@ -37,6 +37,9 @@ export default defineNuxtConfig({
         driver: 'netlifyBlobs',
       },
     },
+    routeRules: {
+      '/api/me/history': { cache: { maxAge: 60 * 3 } },
+    },
   },
 
   modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxt/image'],
