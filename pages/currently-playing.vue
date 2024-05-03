@@ -1,12 +1,13 @@
 <template>
-  <div class="grid place-items-center min-h-screen bg-gradient-to-b from-gray-800 to-green-900 p-5">
-    <div class="bg-gray-900 shadow-lg rounded p-3">
+  <div class="relative grid place-items-center min-h-screen p-5">
+    <div class="absolute inset-0 bg-cover filter blur-[50px] scale-300" :style="backgroundImageStyle" />
+    <div class="relative bg-gray-900 shadow-lg rounded p-3">
       <div class="group relative">
         <img class="w-full md:w-72 block rounded" :src="albumCover" alt="">
       </div>
       <div class="p-5">
-        <h3 class="text-white text-lg">
-          {{ playedItem.name }}
+        <h3 class="text-white text-lgt text-clip overflow-hidden">
+          {{ playedItem.name }} {{ playedItem.explicit ? '🅴' : '' }}
         </h3>
         <p class="text-gray-400">
           {{ playedItem.artists.map((artist) => artist.name).join(', ') }}
@@ -27,10 +28,9 @@ import type { PlaybackState, Track } from '@spotify/web-api-ts-sdk';
 const { data: playbackState } = await useLazyFetch<PlaybackState>(
   `/api/me/playback-state`,
 );
-
 const playedItem = computed<Track>(() => playbackState?.value?.item);
 
-const albumCover = computed<string>(() => playedItem.value?.album.images[0].url);
+const albumCover = computed<string>(() => playedItem.value?.album.images[0].url); // Ca peut renvoyer undefined
 
 const progress = computed<number>(() => {
   const progressMs = playbackState.value.progress_ms;
@@ -39,4 +39,5 @@ const progress = computed<number>(() => {
 });
 
 const progressStyle = computed<string>(() => `width: ${progress.value}%`);
+const backgroundImageStyle = computed<string>(() => `background-image: url(${albumCover.value})`);
 </script>

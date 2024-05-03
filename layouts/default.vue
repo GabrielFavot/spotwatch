@@ -7,7 +7,7 @@
           class="flex justify-center"
         >
           <ul
-            class="items-center ring-1 ring-green-400 px-4 gap-x-3 rounded-full hidden lg:flex bg-black"
+            class="items-center px-4 gap-x-3 rounded-full hidden lg:flex bg-gray-900 "
           >
             <li class="relative">
               <NuxtLink
