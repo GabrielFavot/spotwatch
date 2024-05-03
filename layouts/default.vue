@@ -7,33 +7,29 @@
             class="items-center ring-1 ring-green-400 px-4 gap-x-3 rounded-full hidden lg:flex bg-black"
           >
             <li class="relative">
-              <a
-                href="#"
+              <NuxtLink
                 class="text-lg flex items-center gap-2 py-2 px-4 font-medium transition-colors relative after:absolute after:-bottom-px after:inset-x-2 after:h-px after:rounded-full after:opacity-0 after:bg-gray-900 after:transition-opacity text-gray-500 hover:text-gray-200 hover:underline"
                 :class="isActive('/history') ? 'text-green-400' : ''"
-                ><NuxtLink to="/history">History</NuxtLink></a
+                to="/history"
+                >History</NuxtLink
               >
             </li>
             <li class="relative">
-              <a
-                href="#"
+              <NuxtLink
+                to="/currently-playing"
                 class="text-lg flex items-center gap-2 py-2 px-4 font-medium transition-colors relative after:absolute after:-bottom-px after:inset-x-2 after:h-px after:rounded-full after:opacity-0 after:bg-gray-900 after:transition-opacity text-gray-500 hover:text-gray-200 hover:underline"
                 :class="
                   isActive('/currently-playing')
                     ? 'text-green-400 font-bold'
                     : ''
                 "
+                >Currently playing
+              <div
+                v-if="playbackState?.is_playing"
+                class="w-4 h-4 bg-green-400 rounded-full animate-pulse blur-sm"
+              ></div>
+              </NuxtLink
               >
-                <NuxtLink to="/currently-playing"
-                  >Currently playing</NuxtLink
-                >
-                <div
-                  v-if="playbackState?.is_playing"
-                  class="w-4 h-4 bg-green-400 rounded-full animate-pulse blur-sm"
-                ></div></a
-                
-              >
-              
             </li>
           </ul>
         </div>
