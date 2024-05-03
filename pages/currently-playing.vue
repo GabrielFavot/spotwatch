@@ -1,5 +1,5 @@
 <template>
-  <div class="relative grid place-items-center min-h-screen p-5">
+  <div v-if="playedItem" class="relative grid place-items-center min-h-screen p-5">
     <div class="absolute inset-0 bg-cover filter blur-[50px] scale-125" :style="backgroundImageStyle" />
     <div class="relative bg-spotify-dark shadow-lg rounded p-3 md:max-w-80">
       <img class="w-full md:w-74 block rounded" :src="albumCover" alt="">
