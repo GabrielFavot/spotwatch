@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <nav class="bg-transparent w-full fixed z-20 top-1 full-w">
+      <nav class="bg-transparent w-full fixed z-20 top-4 full-w">
         <div class="flex justify-center" id="navbar-sticky">
           <ul
             class="items-center ring-1 ring-green-400 px-4 gap-x-3 rounded-full hidden lg:flex bg-black"
@@ -23,10 +23,17 @@
                     ? 'text-green-400 font-bold'
                     : ''
                 "
-                ><NuxtLink to="/currently-playing"
-                  >Currently playing</NuxtLink
-                ></a
               >
+                <NuxtLink to="/currently-playing"
+                  >Currently playing</NuxtLink
+                >
+                <div
+                  v-if="playbackState?.is_playing"
+                  class="w-4 h-4 bg-green-400 rounded-full animate-pulse blur-sm"
+                ></div></a
+                
+              >
+              
             </li>
           </ul>
         </div>
@@ -37,6 +44,7 @@
 </template>
 
 <script lang="ts" setup>
+import type { PlaybackState } from '@spotify/web-api-ts-sdk';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
@@ -44,4 +52,8 @@ const route = useRoute();
 const isActive = (path: string) => {
   return route.path === path;
 };
+
+const { data: playbackState } = await useLazyFetch<PlaybackState>(
+  `/api/me/playback-state`
+);
 </script>
