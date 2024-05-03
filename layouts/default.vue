@@ -7,25 +7,25 @@
           class="flex justify-center"
         >
           <ul
-            class="items-center px-4 gap-x-3 rounded-full hidden lg:flex bg-gray-900 "
+            class="items-center px-4 gap-x-3 rounded-full hidden lg:flex bg-spotify-dark "
           >
             <li class="relative">
               <NuxtLink
-                class="text-lg flex items-center gap-2 py-2 px-4 font-medium transition-colors relative after:absolute after:-bottom-px after:inset-x-2 after:h-px after:rounded-full after:opacity-0 after:bg-gray-900 after:transition-opacity text-gray-500 hover:text-gray-200 hover:underline"
-                :class="isActive('/history') ? 'text-green-400' : ''"
+                class="text-lg flex items-center gap-2 py-2 px-4 font-medium transition-colors relative after:absolute after:-bottom-px after:inset-x-2 after:h-px after:rounded-full after:opacity-0 after:bg-spotify-dark after:transition-opacity text-gray-500 hover:text-spotify-lightgray hover:underline"
+                :class="isActive('/history') ? 'text-spotify-green' : ''"
                 to="/history"
               >History</NuxtLink>
             </li>
             <li class="relative">
               <NuxtLink
                 to="/currently-playing"
-                class="text-lg flex items-center gap-2 py-2 px-4 font-medium transition-colors relative after:absolute after:-bottom-px after:inset-x-2 after:h-px after:rounded-full after:opacity-0 after:bg-gray-900 after:transition-opacity text-gray-500 hover:text-gray-200 hover:underline"
-                :class="isActive('/currently-playing') ? 'text-green-400 font-bold': '' "
+                class="text-lg flex items-center gap-2 py-2 px-4 font-medium transition-colors relative after:absolute after:-bottom-px after:inset-x-2 after:h-px after:rounded-full after:opacity-0 after:bg-spotify-dark after:transition-opacity text-gray-500 hover:text-spotify-lightgray hover:underline"
+                :class="isActive('/currently-playing') ? 'text-spotify-green font-bold': '' "
               >
                 Currently playing
                 <div
                   v-if="playbackState?.is_playing"
-                  class="w-4 h-4 bg-green-400 rounded-full animate-pulse blur-sm"
+                  class="w-4 h-4 bg-spotify-green rounded-full animate-pulse blur-sm"
                 />
               </NuxtLink>
             </li>

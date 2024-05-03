@@ -24,7 +24,7 @@
         </audio>
         <a
           :href="trackUrl"
-          class="text-green-400 cursor-pointer text-lg"
+          class="text-spotify-green cursor-pointer text-lg"
         >
           <Icon name="logos:spotify-icon" />
         </a>
@@ -32,7 +32,7 @@
           <span class="mr-3 uppercase text-xs text-gray-400">
             {{ track.album.name }}
           </span>
-          <p class="text-sm font-bold text-gray-200 block">
+          <p class="text-sm font-bold text-spotify-lightgray block">
             {{ trackFullName }}
           </p>
         </div>
