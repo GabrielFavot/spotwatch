@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "lint": "eslint .",
-    "lint-fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "@netlify/blobs": "^7.3.0",
