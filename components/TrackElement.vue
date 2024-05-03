@@ -13,10 +13,19 @@
         @mouseleave="pauseAudio"
       />
       <div class="absolute bottom-0 b-0 px-4 py-3 hidden group-hover:block">
-        <audio ref="audioPlayer" id="audio">
-          <source :src="props.track.preview_url" type="audio/mpeg"/>
+        <audio
+          id="audio"
+          ref="audioPlayer"
+        >
+          <source
+            :src="props.track.preview_url"
+            type="audio/mpeg"
+          >
         </audio>
-        <a :href="trackUrl" class="text-green-400 cursor-pointer text-lg">
+        <a
+          :href="trackUrl"
+          class="text-green-400 cursor-pointer text-lg"
+        >
           <Icon name="logos:spotify-icon" />
         </a>
         <div>
@@ -41,7 +50,7 @@ const props = defineProps<{
 
 const albumImageUrl = computed(() => props.track.album.images[0].url);
 const trackFullName = computed(
-  () => `${props.track.artists[0].name} - ${props.track.name}`
+  () => `${props.track.artists[0].name} - ${props.track.name}`,
 );
 const trackUrl = computed(() => props.track.external_urls.spotify);
 
@@ -54,7 +63,6 @@ const playAudio = () => {
 const pauseAudio = () => {
   audioPlayer.value.pause();
 };
-
 </script>
 
 <style></style>

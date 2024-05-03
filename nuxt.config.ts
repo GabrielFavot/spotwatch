@@ -39,7 +39,9 @@ export default defineNuxtConfig({
   modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxt/image'],
   eslint: {
     config: {
-      stylistic: true,
+      stylistic: {
+        semi: true,
+      },
     },
   },
   image: {

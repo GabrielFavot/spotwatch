@@ -12,9 +12,7 @@
 <script lang="ts" setup>
 import type { PlaybackState } from '@spotify/web-api-ts-sdk';
 
-
 const { data: playbackState } = await useLazyFetch<PlaybackState>(`/api/me/playback-state`);
 
 const playedItem = computed(() => playbackState?.value?.item);
-
 </script>
