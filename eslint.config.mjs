@@ -6,6 +6,11 @@ export default withNuxt(
     name: 'spotify-grid',
     rules: {
       '@stylistic/semi': ['error', 'always'],
+      'no-empty': 'off',
+      'vue/max-attributes-per-line': [
+        'error',
+        { singleline: 3 },
+      ],
     },
   },
 );
