@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts" setup>
-const { data: contributors } = await useFetch<{ login: string, html_url: string }[]>('https://api.github.com/repos/GabrielFavot/spotilive/contributors');
+const { data: contributors } = await useFetch<{ login: string; html_url: string }[]>('https://api.github.com/repos/GabrielFavot/spotilive/contributors');
 
 const randomContributor = useState(() => {
   if (!contributors.value) return null;

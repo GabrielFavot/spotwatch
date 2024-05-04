@@ -11,6 +11,7 @@ export default withNuxt(
         'error',
         { singleline: 3 },
       ],
+      '@stylistic/member-delimiter-style': 'error',
     },
   },
 );
