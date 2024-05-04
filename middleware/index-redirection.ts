@@ -8,7 +8,6 @@ export default defineNuxtRouteMiddleware(async () => {
   if (playbackState.value?.is_playing) {
     return navigateTo(`/currently-playing`);
   }
-  else {
-    return navigateTo('/history');
-  }
+
+  return navigateTo('/history');
 });

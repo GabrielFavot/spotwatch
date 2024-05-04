@@ -24,8 +24,8 @@
 </template>
 
 <script lang="ts" setup>
-import type { CSSProperties } from 'vue';
 import type { PlaybackState, Track } from '@spotify/web-api-ts-sdk';
+import type { CSSProperties } from 'vue';
 
 const { data: playbackState } = await useLazyFetch<PlaybackState>(
   `/api/me/playback-state`,
@@ -33,7 +33,7 @@ const { data: playbackState } = await useLazyFetch<PlaybackState>(
 const playedItem = computed<null | Track>(() => {
   const item = playbackState.value?.item;
 
-  if (!item) return null;
+  if (!item) return navigateTo('/offline');
 
   if ('album' in item) {
     return item;

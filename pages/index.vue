@@ -4,6 +4,6 @@
 
 <script lang="ts" setup>
 definePageMeta({
-  middleware: 'playing',
+  middleware: 'index-redirection',
 });
 </script>
