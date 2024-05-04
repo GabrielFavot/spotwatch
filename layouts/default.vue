@@ -12,15 +12,15 @@
             <li class="relative">
               <NuxtLink
                 class="text-lg flex items-center gap-2 py-2 px-4 font-medium transition-colors relative after:absolute after:-bottom-px after:inset-x-2 after:h-px after:rounded-full after:opacity-0 after:bg-spotify-dark after:transition-opacity text-gray-500 hover:text-spotify-lightgray hover:underline"
-                :class="isActive('/history') ? 'text-spotify-green' : ''"
+                active-class="text-spotify-green font-bold"
                 to="/history"
               >History</NuxtLink>
             </li>
             <li class="relative">
               <NuxtLink
-                to="/currently-playing"
                 class="text-lg flex items-center gap-2 py-2 px-4 font-medium transition-colors relative after:absolute after:-bottom-px after:inset-x-2 after:h-px after:rounded-full after:opacity-0 after:bg-spotify-dark after:transition-opacity text-gray-500 hover:text-spotify-lightgray hover:underline"
-                :class="isActive('/currently-playing') ? 'text-spotify-green font-bold': '' "
+                active-class="text-spotify-green font-bold"
+                to="/currently-playing"
               >
                 Currently playing
                 <div
@@ -40,13 +40,6 @@
 
 <script lang="ts" setup>
 import type { PlaybackState } from '@spotify/web-api-ts-sdk';
-import { useRoute } from 'vue-router';
-
-const route = useRoute();
-
-const isActive = (path: string) => {
-  return route.path === path;
-};
 
 const { data: playbackState } = await useLazyFetch<PlaybackState>(
   `/api/me/playback-state`,
