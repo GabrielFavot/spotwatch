@@ -18,7 +18,8 @@
           ref="audioPlayer"
         >
           <source
-            :src="props.track.preview_url"
+            v-if="track.preview_url"
+            :src="track.preview_url"
             type="audio/mpeg"
           >
         </audio>
@@ -57,11 +58,11 @@ const trackUrl = computed(() => props.track.external_urls.spotify);
 const audioPlayer = ref<HTMLAudioElement>();
 
 const playAudio = () => {
-  audioPlayer.value.play();
+  audioPlayer.value?.play();
 };
 
 const pauseAudio = () => {
-  audioPlayer.value.pause();
+  audioPlayer.value?.pause();
 };
 </script>
 
