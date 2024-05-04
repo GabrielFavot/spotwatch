@@ -7,16 +7,10 @@
 </template>
 
 <script lang="ts" setup>
-const contributors = ref();
+const { data: contributors } = await useFetch<{ login: string, html_url: string }[]>('https://api.github.com/repos/GabrielFavot/spotilive/contributors');
 
-onMounted(async () => {
-  const contributorsPayload = await fetch('https://api.github.com/repos/GabrielFavot/spotilive/contributors');
-
-  contributors.value = await contributorsPayload.json();
-});
-
-const randomContributor = computed(() => {
-  if (!contributors.value) return;
+const randomContributor = useState(() => {
+  if (!contributors.value) return null;
 
   const randomContributor = contributors.value[Math.floor(Math.random() * contributors.value.length)];
 
