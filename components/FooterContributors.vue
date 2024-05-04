@@ -1,10 +1,8 @@
 <template>
-  <div class="flex flex-row items-center text-spotify-lightgray font-thin gap-2">
+  <div :v-if="contributors?.length" class="flex flex-row items-center text-spotify-lightgray font-thin gap-2">
     <Icon name="ic:baseline-code" class="text-spotify-green" />
     <span>with</span>
     <Icon name="material-symbols:favorite-outline" class="text-red-400 animate-pulse" />
-    <span>and</span>
-    <Icon name="ph:beer-stein" class="text-yellow-400" />
     <span>by</span>
     <a :href="contributors[index]?.url" class="hover:underline font-normal">{{ contributors[index]?.login }}</a>
   </div>
@@ -13,12 +11,11 @@
 <script lang="ts" setup>
 import { useIntervalFn } from '@vueuse/core';
 
-const { contributors } = defineProps(
-  {
-    contributors: Array as PropType<{ login: string; url: string }[]>,
-  },
-);
+const { contributors } = defineProps({
+  contributors: Array as PropType<{ login: string; url: string }[]>,
+});
 const index = ref(0);
+
 useIntervalFn(() => {
   index.value = (index.value + 1) % contributors.length;
 }, 3000);
