@@ -34,12 +34,14 @@
       </nav>
     </header>
     <NuxtPage />
+    <AppFooter />
   </div>
 </template>
 
 <script lang="ts" setup>
 import type { PlaybackState } from '@spotify/web-api-ts-sdk';
 import { useRoute } from 'vue-router';
+import AppFooter from '~/components/appFooter.vue';
 
 const route = useRoute();
 
