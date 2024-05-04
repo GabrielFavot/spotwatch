@@ -6,19 +6,20 @@
     <span>and</span>
     <Icon class="text-yellow-400" name="ph:beer-stein" />
     <span>by</span>
-    <a :href="randomContributor?.url" class="hover:underline font-normal">{{ randomContributor?.login }}</a>
+    <a :href="contributors[index]?.url" class="hover:underline font-normal">{{ contributors[index]?.login }}</a>
   </div>
 </template>
 
 <script lang="ts" setup>
+import { useIntervalFn } from '@vueuse/core';
+
 const { contributors } = defineProps(
   {
     contributors: Array as PropType<{ login: string; url: string }[]>,
   },
 );
-
-const randomContributor = computed(() => {
-  if (!contributors) return null;
-  return contributors[Math.floor(Math.random() * contributors.length)];
-});
+const index = ref(0);
+useIntervalFn(() => {
+  index.value = (index.value + 1) % contributors.length;
+}, 3000);
 </script>
