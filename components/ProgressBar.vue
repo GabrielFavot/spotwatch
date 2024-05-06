@@ -9,11 +9,6 @@
 <script lang="ts" setup>
 import type { CSSProperties } from 'vue';
 
-onMounted(() => {
-  console.log('progressInMs', props.progressInMs);
-  console.log('durationInMs', props.durationInMs);
-});
-
 const props = defineProps({
   progressInMs: {
     type: Number,

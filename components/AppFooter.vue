@@ -3,7 +3,7 @@
     <a href="https://github.com/GabrielFavot/spotilive">
       <Icon class="text-spotify-lightgray hover:text-spotify-green" name="octicon:mark-github-16" />
     </a>
-    <FooterContributors :contributors="contributors" />
+    <FooterContributors v-if="contributors" :contributors="contributors" />
     <div />
   </footer>
 </template>
@@ -11,5 +11,5 @@
 <script lang="ts" setup>
 import FooterContributors from './FooterContributors.vue';
 
-const { data: contributors } = await useFetch<{ login: string; html_url: string }[]>('https://api.github.com/repos/GabrielFavot/spotilive/contributors');
+const { data: contributors } = await useFetch<{ login: string; html_url: string }[]>('https://api.github.com/repos/GabrielFavot/spotilive/contributors') ?? [];
 </script>
