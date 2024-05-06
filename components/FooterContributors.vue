@@ -4,7 +4,7 @@
     <span>with</span>
     <Icon name="material-symbols:favorite-outline" class="text-red-400 animate-pulse" />
     <span>by</span>
-    <a :href="contributors[index]?.html_url" class="hover:underline font-normal">{{ contributors[index]?.login }}</a>
+    <a :href="contributors[index]?.html_url" target="_blank" class="hover:underline font-normal">{{ contributors[index]?.login }}</a>
   </div>
 </template>
 

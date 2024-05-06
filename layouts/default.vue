@@ -14,7 +14,9 @@
                 class="text-lg flex items-center gap-2 py-2 px-4 font-medium transition-colors relative after:absolute after:-bottom-px after:inset-x-2 after:h-px after:rounded-full after:opacity-0 after:bg-spotify-dark after:transition-opacity text-gray-500 hover:text-spotify-lightgray hover:underline"
                 active-class="text-spotify-green font-bold"
                 to="/history"
-              >History</NuxtLink>
+              >
+                History
+              </NuxtLink>
             </li>
             <li class="relative">
               <NuxtLink

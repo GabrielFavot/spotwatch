@@ -15,6 +15,7 @@
             <a
               class=" text-spotify-lightgray inline"
               :href="artist.uri"
+              target="_blank"
             >{{ artist.name }}</a>
             <span v-if="i < playedItem.artists.length - 1" class="text-spotify-lightgray px-2 inline hover:underline">•</span>
           </div>

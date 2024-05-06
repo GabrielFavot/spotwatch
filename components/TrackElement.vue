@@ -25,6 +25,7 @@
         </audio>
         <a
           :href="trackUrl"
+          target="_blank"
           class="text-spotify-green cursor-pointer text-lg"
         >
           <Icon name="logos:spotify-icon" />
