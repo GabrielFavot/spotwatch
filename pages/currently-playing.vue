@@ -9,6 +9,12 @@
 import type { PlaybackState } from '@spotify/web-api-ts-sdk';
 
 const { data: playbackState } = await useLazyFetch<PlaybackState>(
-  `/api/me/playback-state`,
-);
+  `/api/me/currently-playing-track`,
+).then((data) => {
+  if (!data) {
+    navigateTo('/offline');
+  }
+
+  return data;
+});
 </script>

@@ -7,7 +7,7 @@
           class="flex justify-center"
         >
           <ul
-            class="items-center px-4 gap-x-3 rounded-full hidden lg:flex bg-spotify-dark "
+            class="items-center px-4 gap-x-3 rounded-full flex bg-spotify-dark "
           >
             <li class="relative">
               <NuxtLink
@@ -42,6 +42,6 @@
 import type { PlaybackState } from '@spotify/web-api-ts-sdk';
 
 const { data: playbackState } = await useLazyFetch<PlaybackState>(
-  `/api/me/playback-state`,
+  `/api/me/currently-playing-track`,
 );
 </script>
