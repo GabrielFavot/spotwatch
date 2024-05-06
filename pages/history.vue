@@ -1,17 +1,13 @@
 <template>
-  <ul
-    role="list"
-    class="w-fit mx-auto grid grid-cols-2 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-2 justify-items-center gap-4 bg-black"
-  >
-    <li
-      v-for="item in tracks?.items ?? []"
-      :key="item.track.id"
-    >
-      <TrackElement :track="item.track" />
-    </li>
-  </ul>
+  <div>
+    <HistoryGrid :history-items="historyItems" />
+  </div>
 </template>
 
 <script lang="ts" setup>
-const { data: tracks } = await useLazyFetch(`/api/me/history`);
+const { data: playHistory } = await useLazyFetch(`/api/me/history`);
+
+const historyItems = computed(() => {
+  return playHistory.value?.items ?? [];
+});
 </script>
