@@ -1,5 +1,5 @@
 export default defineNuxtRouteMiddleware(async () => {
-  const { data: playbackState } = await useFetch('/api/me/currently-playing-track');
+  const { data: playbackState } = await useCurrentPlaybackState();
 
   if (playbackState.value?.is_playing) {
     console.log('User is currently playing a track');

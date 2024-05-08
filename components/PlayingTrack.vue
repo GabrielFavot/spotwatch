@@ -32,15 +32,12 @@
 <script lang="ts" setup>
 import type { PlaybackState, Track } from '@spotify/web-api-ts-sdk';
 
-const { playbackState } = defineProps({
-  playbackState: {
-    type: Object as PropType<PlaybackState>,
-    required: true,
-  },
-});
+const props = defineProps<{
+  playbackState: PlaybackState;
+}>();
 
 const playedItem = computed<Track | null>(() => {
-  const item = playbackState.item;
+  const item = props.playbackState.item;
 
   if ('album' in item) {
     return item;
