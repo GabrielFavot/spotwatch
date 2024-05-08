@@ -39,7 +39,7 @@ export default defineNuxtConfig({
     },
     routeRules: {
       '/api/me/history': { cache: { maxAge: 60 * 3 } },
-      '/api/me/currently-playing-tracking-track': { cache: { maxAge: 5 } },
+      '/api/me/currently-playing-track': { cache: { maxAge: 5 } },
     },
   },
 

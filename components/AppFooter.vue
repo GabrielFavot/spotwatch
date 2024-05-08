@@ -9,7 +9,5 @@
 </template>
 
 <script lang="ts" setup>
-import FooterContributors from './FooterContributors.vue';
-
-const { data: contributors } = await useFetch<{ login: string; html_url: string }[]>('https://api.github.com/repos/GabrielFavot/spotwatch/contributors') ?? [];
+const { data: contributors } = await useLazyFetch<{ login: string; html_url: string }[]>('https://api.github.com/repos/GabrielFavot/spotwatch/contributors') ?? [];
 </script>
