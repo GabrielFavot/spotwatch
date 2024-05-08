@@ -8,13 +8,12 @@
 <script lang="ts" setup>
 import type { PlaybackState } from '@spotify/web-api-ts-sdk';
 
-const playbackState = await useLazyFetch<PlaybackState>(
-  `/api/me/currently-playing-track`,
-).then((response) => {
-  if (!response.data) {
-    navigateTo('/offline');
-  }
-
-  return response.data;
+definePageMeta({
+  title: 'Currently Playing',
+  middleware: 'offline-redirect',
 });
+
+const { data: playbackState } = await useLazyFetch<PlaybackState>(
+  `/api/me/currently-playing-track`,
+);
 </script>

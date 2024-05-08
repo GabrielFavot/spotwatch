@@ -3,9 +3,9 @@ export default defineNuxtRouteMiddleware(async () => {
 
   if (playbackState.value?.is_playing) {
     console.log('User is currently playing a track');
-    return navigateTo('/currently-playing');
+    return;
   }
 
   console.log('User is not currently playing a track');
-  return navigateTo('/history');
+  return navigateTo('/offline');
 });

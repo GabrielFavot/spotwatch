@@ -14,4 +14,8 @@
 </template>
 
 <script lang="ts" setup>
+definePageMeta({
+  title: 'Offline',
+  description: 'You are offline. Check back later or check the history.',
+});
 </script>
