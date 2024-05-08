@@ -15,18 +15,12 @@
 </template>
 
 <script lang="ts" setup>
-import type { PlaybackState } from '@spotify/web-api-ts-sdk';
-import { useIntervalFn } from '@vueuse/core';
-
 definePageMeta({
   title: 'Currently Playing',
   middleware: 'offline-redirect',
 });
 
-const { pending, data: playbackState } = await useLazyFetch(`/api/me/currently-playing-track`);
+const { pending, data: playbackState, refresh } = await useCurrentPlaybackState({ lazy: true });
 
-useIntervalFn(async () => {
-  const { data } = await useLazyFetch<PlaybackState>(`/api/me/currently-playing-track`);
-  playbackState.value = data.value;
-}, 20000);
+useIntervalFn(refresh, 20_000);
 </script>

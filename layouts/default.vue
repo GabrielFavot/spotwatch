@@ -41,9 +41,5 @@
 </template>
 
 <script lang="ts" setup>
-import type { PlaybackState } from '@spotify/web-api-ts-sdk';
-
-const { data: playbackState } = await useLazyFetch<PlaybackState>(
-  `/api/me/currently-playing-track`,
-);
+const { data: playbackState } = await useCurrentPlaybackState({ lazy: true });
 </script>

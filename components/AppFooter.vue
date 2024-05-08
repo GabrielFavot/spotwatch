@@ -9,5 +9,7 @@
 </template>
 
 <script lang="ts" setup>
-const { data: contributors } = await useLazyFetch<{ login: string; html_url: string }[]>('https://api.github.com/repos/GabrielFavot/spotwatch/contributors') ?? [];
+const { data: contributors } = await useLazyFetch<{ login: string; html_url: string }[]>('https://api.github.com/repos/GabrielFavot/spotwatch/contributors', {
+  key: 'contributors',
+});
 </script>

@@ -9,17 +9,13 @@
 </template>
 
 <script lang="ts" setup>
-import { useIntervalFn } from '@vueuse/core';
+const props = defineProps<{
+  contributors: { login: string; html_url: string }[];
+}>();
 
-const { contributors } = defineProps({
-  contributors: {
-    type: Array as PropType<{ login: string; html_url: string }[]>,
-    required: true,
-  },
-});
 const index = ref(0);
 
 useIntervalFn(() => {
-  index.value = (index.value + 1) % contributors.length;
+  index.value = (index.value + 1) % props.contributors.length;
 }, 3000);
 </script>
