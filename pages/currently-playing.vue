@@ -23,11 +23,10 @@ definePageMeta({
   middleware: 'offline-redirect',
 });
 
-const { pending, data: playbackState } = await useLazyFetch<PlaybackState>(`/api/me/currently-playing-track`);
+const { pending, data: playbackState } = await useLazyFetch(`/api/me/currently-playing-track`);
 
 useIntervalFn(async () => {
   const { data } = await useLazyFetch<PlaybackState>(`/api/me/currently-playing-track`);
   playbackState.value = data.value;
-  pending.value = false;
-}, 5000);
+}, 20000);
 </script>
