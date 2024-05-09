@@ -15,6 +15,9 @@
 </template>
 
 <script lang="ts" setup>
+import { useIntervalFn } from '@vueuse/core';
+import { useCurrentPlaybackState } from '~/composables/data';
+
 definePageMeta({
   title: 'Currently Playing',
   middleware: 'offline-redirect',
@@ -22,5 +25,5 @@ definePageMeta({
 
 const { pending, data: playbackState, refresh } = await useCurrentPlaybackState({ lazy: true });
 
-useIntervalFn(refresh, 20_000);
+useIntervalFn(refresh, 10_000);
 </script>
