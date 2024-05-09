@@ -10,16 +10,14 @@
         <h3 class="text-white text-lgt text-clip overflow-hidden">
           {{ playedItem.name }} {{ playedItem.explicit ? '🅴' : '' }}
         </h3>
-        <div class="inline">
-          <div :key="i" v-for:="(artist, i) in playedItem.artists">
-            <a
-              class=" text-spotify-lightgray inline"
-              :href="artist.uri"
-              target="_blank"
-            >{{ artist.name }}</a>
-            <span v-if="i < playedItem.artists.length - 1" class="text-spotify-lightgray px-2 inline hover:underline">•</span>
-          </div>
-        </div>
+        <span :key="i" v-for:="(artist, i) in playedItem.artists">
+          <a
+            class=" text-spotify-lightgray inline"
+            :href="artist.uri"
+            target="_blank"
+          >{{ artist.name }}</a>
+          <span v-if="i < playedItem.artists.length - 1" class="text-spotify-lightgray px-2 inline hover:underline">•</span>
+        </span>
         <ProgressBar
           :progress-in-ms="playbackState.progress_ms"
           :duration-in-ms="playedItem.duration_ms"
