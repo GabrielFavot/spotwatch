@@ -31,15 +31,25 @@ export default defineNuxtConfig({
       default: {
         driver: 'memory',
       },
+      history: {
+        driver: 'fs',
+        base: './data/history',
+      },
     },
     storage: {
       default: {
+        driver: 'netlifyBlobs',
+      },
+      history: {
         driver: 'netlifyBlobs',
       },
     },
     routeRules: {
       '/api/me/history': { cache: { maxAge: 60 * 3 } },
       '/api/me/currently-playing-track': { cache: { maxAge: 5 } },
+    },
+    scheduledTasks: {
+      '* * * * *': 'history:refresh',
     },
   },
 
