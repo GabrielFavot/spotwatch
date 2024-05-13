@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="pending" class="bg-spotify-dark min-h-screen grid place-items-center">
+    <div v-if="pending && !playbackState" class="bg-spotify-dark min-h-screen grid place-items-center">
       <div class="text-center">
         <h1 class="text-4xl text-spotify-green">
           Loading...
