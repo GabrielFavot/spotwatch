@@ -32,11 +32,18 @@ export default defineNuxtConfig({
         driver: 'fs',
         base: './data',
       },
+      cache: {
+        driver: 'memory',
+      },
     },
     storage: {
       default: {
         driver: 'netlifyBlobs',
         name: 'default',
+      },
+      cache: {
+        driver: 'netlifyBlobs',
+        name: 'cache',
       },
     },
     routeRules: {
