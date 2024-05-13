@@ -1,5 +1,7 @@
 import type { RecentlyPlayedTracksPage } from '@spotify/web-api-ts-sdk';
 
+export const HISTORY_TRACK_STORAGE_KEY = 'history:tracks';
+
 export default defineTask({
   meta: {
     name: 'history:load',
@@ -8,7 +10,7 @@ export default defineTask({
   async run() {
     const spotify = await useSpotify();
 
-    const storedTracks = await useStorage('history').getItem<RecentlyPlayedTracksPage['items']>('tracks');
+    const storedTracks = await useStorage().getItem<RecentlyPlayedTracksPage['items']>(HISTORY_TRACK_STORAGE_KEY);
     const queryRange = computeCursor(storedTracks ?? []);
 
     const latestTracks = await spotify.player.getRecentlyPlayedTracks(50, queryRange);

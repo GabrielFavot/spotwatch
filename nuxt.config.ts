@@ -31,34 +31,25 @@ export default defineNuxtConfig({
       default: {
         driver: 'memory',
       },
-      history: {
-        driver: 'fs',
-        base: './data/history',
-      },
     },
     storage: {
       default: {
         driver: 'netlifyBlobs',
-      },
-      history: {
-        driver: 'netlifyBlobs',
+        name: 'default',
       },
     },
     routeRules: {
-      '/api/me/history': { cache: { maxAge: 60 * 3 } },
       '/api/me/currently-playing-track': { cache: { maxAge: 5 } },
     },
     scheduledTasks: {
-      '* * * * *': 'history:refresh',
+      '*/5 * * * *': 'history:refresh',
     },
   },
 
   modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxt/image', '@vueuse/nuxt'],
   eslint: {
     config: {
-      stylistic: {
-        semi: true,
-      },
+      stylistic: true,
     },
   },
   image: {
