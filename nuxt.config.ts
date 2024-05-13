@@ -29,22 +29,14 @@ export default defineNuxtConfig({
     },
     devStorage: {
       default: {
-<<<<<<< Updated upstream
-        driver: 'memory',
-=======
         driver: 'fs',
         base: './data',
->>>>>>> Stashed changes
       },
     },
     storage: {
       default: {
         driver: 'netlifyBlobs',
-<<<<<<< Updated upstream
         name: 'default',
-=======
-        name: 'spotiwatch',
->>>>>>> Stashed changes
       },
     },
     routeRules: {

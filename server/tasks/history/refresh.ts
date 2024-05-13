@@ -10,11 +10,7 @@ export default defineTask({
   async run() {
     const spotify = await useSpotify();
 
-<<<<<<< Updated upstream
     const storedTracks = await useStorage().getItem<RecentlyPlayedTracksPage['items']>(HISTORY_TRACK_STORAGE_KEY);
-=======
-    const storedTracks = await useStorage().getItem<RecentlyPlayedTracksPage['items']>('tracks');
->>>>>>> Stashed changes
     const queryRange = computeCursor(storedTracks ?? []);
 
     const latestTracks = await spotify.player.getRecentlyPlayedTracks(50, queryRange);
