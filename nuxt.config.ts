@@ -35,7 +35,6 @@ export default defineNuxtConfig({
     storage: {
       default: {
         driver: 'netlifyBlobs',
-        name: 'default',
       },
     },
     routeRules: {
