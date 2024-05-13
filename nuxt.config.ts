@@ -35,6 +35,7 @@ export default defineNuxtConfig({
     storage: {
       default: {
         driver: 'netlifyBlobs',
+        name: 'spotify-grid',
       },
     },
     routeRules: {

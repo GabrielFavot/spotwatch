@@ -10,6 +10,7 @@ export default defineTask({
   async run() {
     const spotify = await useSpotify();
 
+    console.log('Fetching latest tracks');
     const storedTracks = await useStorage().getItem<RecentlyPlayedTracksPage['items']>(HISTORY_TRACK_STORAGE_KEY);
     const queryRange = computeCursor(storedTracks ?? []);
 
@@ -23,7 +24,6 @@ export default defineTask({
     return {
       result: {
         size: history.length,
-        latestTracks: latestTracks.items,
       },
     };
   },

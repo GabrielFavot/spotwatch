@@ -28,3 +28,6 @@ logs
 
 # local data 
 data/*
+
+# Local Netlify folder
+.netlify
