@@ -44,7 +44,7 @@ export default defineNuxtConfig({
         token: process.env.NETLIFY_API_TOKEN,
       },
       cache: {
-        driver: 'netlifyBlobs',
+        driver: 'memory',
         name: 'cache',
       },
     },

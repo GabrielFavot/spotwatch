@@ -13,9 +13,11 @@ export default defineTask({
     const storage = useStorage('spotify');
 
     const storedTracks = await storage.getItem<RecentlyPlayedTracksPage['items']>(HISTORY_TRACK_STORAGE_KEY);
+    console.log('Stored tracks:', storedTracks?.length);
     const queryRange = computeCursor(storedTracks ?? []);
 
     const latestTracks = await spotify.player.getRecentlyPlayedTracks(50, queryRange);
+    console.log('Latest tracks:', latestTracks.items.length);
 
     const history = storedTracks ? latestTracks.items.concat(...storedTracks) : latestTracks.items;
     await storage.setItem(HISTORY_TRACK_STORAGE_KEY, history);
