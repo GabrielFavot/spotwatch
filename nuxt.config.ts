@@ -40,6 +40,8 @@ export default defineNuxtConfig({
       spotify: {
         driver: 'netlifyBlobs',
         name: 'spotify-grid',
+        siteId: process.env.NETLIFY_SITE_ID,
+        token: process.env.NETLIFY_AUTH_TOKEN,
       },
       cache: {
         driver: 'netlifyBlobs',
