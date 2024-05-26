@@ -9,10 +9,14 @@ export default defineTask({
     description: 'Loads history of played songs',
   },
   async run() {
+    console.log('Running history:load task');
+    console.log(process.env);
+
     const spotify = await useSpotify();
     const storage = useStorage('spotify');
 
     const storedTracks = await storage.getItem<RecentlyPlayedTracksPage['items']>(HISTORY_TRACK_STORAGE_KEY);
+    console.log('Stored tracks:', storedTracks?.length);
     const queryRange = computeCursor(storedTracks ?? []);
 
     const latestTracks = await spotify.player.getRecentlyPlayedTracks(50, queryRange);
