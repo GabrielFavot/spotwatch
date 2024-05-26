@@ -24,6 +24,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    preset: 'netlify_edge',
     experimental: {
       tasks: true,
     },
