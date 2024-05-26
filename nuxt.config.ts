@@ -29,6 +29,10 @@ export default defineNuxtConfig({
     },
     devStorage: {
       default: {
+        driver: 'fs',
+        base: './data',
+      },
+      cache: {
         driver: 'memory',
       },
     },
@@ -36,6 +40,10 @@ export default defineNuxtConfig({
       default: {
         driver: 'netlifyBlobs',
         name: 'spotify-grid',
+      },
+      cache: {
+        driver: 'netlifyBlobs',
+        name: 'cache',
       },
     },
     routeRules: {

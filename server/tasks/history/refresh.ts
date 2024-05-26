@@ -19,7 +19,7 @@ export default defineTask({
     console.log('Fetched', latestTracks.items.length, 'new songs');
 
     const history = storedTracks ? latestTracks.items.concat(...storedTracks) : latestTracks.items;
-    await useStorage('history').setItem('tracks', history);
+    await useStorage().setItem('tracks', history);
 
     return {
       result: {
