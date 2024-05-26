@@ -1,9 +1,10 @@
-import { type AccessToken, SpotifyApi, ProvidedAccessTokenStrategy, emptyAccessToken } from '@spotify/web-api-ts-sdk';
+import { ProvidedAccessTokenStrategy, SpotifyApi, emptyAccessToken, type AccessToken } from '@spotify/web-api-ts-sdk';
 
 const storageKey = 'spotify_access_token';
 
 export async function useSpotify() {
   const { clientId, clientSecret } = useRuntimeConfig().spotify;
+
   const storage = useStorage();
   const accessToken = await getCachedAccessToken();
 

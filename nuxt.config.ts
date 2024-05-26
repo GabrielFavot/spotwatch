@@ -28,16 +28,16 @@ export default defineNuxtConfig({
       tasks: true,
     },
     devStorage: {
-      default: {
+      spotify: {
         driver: 'fs',
-        base: './data',
+        base: '.nuxt/.data',
       },
       cache: {
         driver: 'memory',
       },
     },
     storage: {
-      default: {
+      spotify: {
         driver: 'netlifyBlobs',
         name: 'spotify-grid',
       },
@@ -50,7 +50,7 @@ export default defineNuxtConfig({
       '/api/me/currently-playing-track': { cache: { maxAge: 5 } },
     },
     scheduledTasks: {
-      '*/5 * * * *': 'history:refresh',
+      '*/3 * * * *': 'history:refresh',
     },
   },
 

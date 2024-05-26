@@ -9,17 +9,15 @@ export default defineTask({
   },
   async run() {
     const spotify = await useSpotify();
+    const storage = useStorage('spotify');
 
-    console.log('Fetching latest tracks');
-    const storedTracks = await useStorage().getItem<RecentlyPlayedTracksPage['items']>(HISTORY_TRACK_STORAGE_KEY);
+    const storedTracks = await storage.getItem<RecentlyPlayedTracksPage['items']>(HISTORY_TRACK_STORAGE_KEY);
     const queryRange = computeCursor(storedTracks ?? []);
 
     const latestTracks = await spotify.player.getRecentlyPlayedTracks(50, queryRange);
 
-    console.log('Fetched', latestTracks.items.length, 'new songs');
-
     const history = storedTracks ? latestTracks.items.concat(...storedTracks) : latestTracks.items;
-    await useStorage().setItem('tracks', history);
+    await storage.setItem(HISTORY_TRACK_STORAGE_KEY, history);
 
     return {
       result: {
@@ -29,7 +27,7 @@ export default defineTask({
   },
 });
 
-function computeCursor(history: RecentlyPlayedTracksPage['items']): { timestamp: number; type: 'before' | 'after' } {
+function computeCursor(history: RecentlyPlayedTracksPage['items']): { timestamp: number, type: 'before' | 'after' } {
   const lastSong = history[0];
 
   if (!lastSong) {
