@@ -51,9 +51,7 @@ export default defineNuxtConfig({
     },
     routeRules: {
       '/api/me/currently-playing-track': { cache: { maxAge: 5 } },
-    },
-    scheduledTasks: {
-      '*/3 * * * *': 'history:refresh',
+      '/api/me/history': { cache: { maxAge: 60 * 15 } },
     },
   },
 
