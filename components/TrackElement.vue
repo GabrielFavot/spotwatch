@@ -3,7 +3,7 @@
     class="shadow-md relative duration-500 hover:scale-105 hover:shadow-xl group rounded"
   >
     <div class="bg-gradient-to-b from-gray-300 to-gray-700">
-      <NuxtImg
+      <img
         :src="albumImageUrl"
         :alt="trackFullName"
         class="group-hover:mix-blend-multiply"
@@ -11,7 +11,7 @@
         loading="lazy"
         @click="playAudio"
         @mouseleave="pauseAudio"
-      />
+      >
       <div class="absolute bottom-0 b-0 px-4 py-3 hidden group-hover:block">
         <audio
           id="audio"
@@ -47,7 +47,7 @@
 import type { Track } from '@spotify/web-api-ts-sdk';
 
 const props = defineProps<{
-  track: Track;
+  track: Track
 }>();
 
 const albumImageUrl = computed(() => props.track.album.images[0].url);

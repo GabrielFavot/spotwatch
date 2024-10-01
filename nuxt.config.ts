@@ -55,13 +55,10 @@ export default defineNuxtConfig({
     },
   },
 
-  modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@nuxt/image', '@vueuse/nuxt'],
+  modules: ['nuxt-icon', '@nuxtjs/tailwindcss', '@nuxt/eslint', '@vueuse/nuxt'],
   eslint: {
     config: {
       stylistic: true,
     },
-  },
-  image: {
-    domains: ['i.scdn.co'],
   },
 });
