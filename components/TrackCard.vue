@@ -66,5 +66,3 @@ const pauseAudio = () => {
   audioPlayer.value?.pause();
 };
 </script>
-
-<style></style>

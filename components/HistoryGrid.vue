@@ -7,7 +7,7 @@
       v-for="item in historyItems ?? []"
       :key="item.track.id"
     >
-      <TrackElement :track="item.track" />
+      <TrackCard :track="item.track" />
     </li>
   </ul>
 </template>
@@ -16,7 +16,7 @@
 import type { PlayHistory } from '@spotify/web-api-ts-sdk';
 
 const { historyItems } = defineProps<{
-  historyItems: PlayHistory[];
+  historyItems: PlayHistory[]
 }>();
 </script>
 
