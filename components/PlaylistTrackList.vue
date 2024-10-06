@@ -16,7 +16,7 @@ import type { Playlist, Track } from '@spotify/web-api-ts-sdk';
 
 defineProps({
   tracks: {
-    type: Array as PropType<Playlist<Track>['tracks']['items'] | Track[]>,
+    type: Array as PropType<Playlist<Track>['tracks']['items']>,
     required: true,
   },
 });
