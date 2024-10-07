@@ -8,5 +8,5 @@ export default defineEventHandler(async () => {
     return undefined;
   }
 
-  return spotify.playlists.getPlaylist(daylist.id, 'FR');
+  return spotify.playlists.getPlaylist(daylist.id);
 });

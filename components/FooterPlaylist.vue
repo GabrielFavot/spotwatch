@@ -1,11 +1,12 @@
 <template>
   <div class="flex justify-center">
-    <NuxtLink
-      :to="`/playlist/${playlist.id}`"
+    <a
+      :href="`https://open.spotify.com/playlist/${playlist.id}`"
+      target="_blank"
       class="text-xs text-gray-400 opacity-50 hover:text-white hover:opacity-100 transition-colors"
     >
       #{{ playlist.id }} | {{ playlist.snapshot_id }}
-    </NuxtLink>
+    </a>
   </div>
 </template>
 
