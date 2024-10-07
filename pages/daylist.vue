@@ -3,6 +3,10 @@
     <div v-if="daylist" class="max-w-6xl mx-auto p-6">
       <DaylistHeader :daylist="daylist" />
       <PlaylistTrackList :tracks="daylist.tracks.items" />
+      <FooterPlaylist
+        :playlist-id="daylist.id"
+        :snapshot-id="daylist.snapshot_id"
+      />
     </div>
   </div>
 </template>
