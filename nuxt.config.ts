@@ -52,7 +52,7 @@ export default defineNuxtConfig({
     routeRules: {
       '/api/me/currently-playing-track': { cache: { maxAge: 5 } },
       '/api/me/history': { cache: { maxAge: 60 * 15 } },
-      '/api/playlists/daylist': { cache: { maxAge: 60 * 60 * 2 } },
+      '/api/playlists/daylist': { cache: { maxAge: 60 * 15 } },
     },
   },
 
