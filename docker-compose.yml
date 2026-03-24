@@ -1,8 +1,8 @@
 services:
   app:
     build: .
-    ports:
-      - "3000:3000"
+    expose:
+      - "3000"
     environment:
       NUXT_REDIS_URL: redis://redis:6379
       NUXT_SPOTIFY_CLIENT_ID: ${NUXT_SPOTIFY_CLIENT_ID}
@@ -16,8 +16,6 @@ services:
 
   redis:
     image: redis:7-alpine
-    ports:
-      - "6379:6379"
     volumes:
       - redis_data:/data
     command: redis-server --appendonly yes
