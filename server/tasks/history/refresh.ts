@@ -1,42 +1,38 @@
-import type { RecentlyPlayedTracksPage } from '@spotify/web-api-ts-sdk';
-
-export const HISTORY_TRACK_STORAGE_KEY = 'history:tracks';
-export const HISTORY_LENGTH_STORAGE_KEY = 'history:length';
+import type { RecentlyPlayedTracksPage } from '@spotify/web-api-ts-sdk'
+import type { SlimTrack } from '~/server/types/history'
+import { addTracks, getLatestPlayedAt } from '~/server/utils/redis'
 
 export default defineTask({
   meta: {
-    name: 'history:load',
-    description: 'Loads history of played songs',
+    name: 'history:refresh',
+    description: 'Loads history of played songs into Redis',
   },
   async run() {
-    const spotify = await useSpotify();
-    const storage = useStorage('spotify');
+    const spotify = await useSpotify()
 
-    const storedTracks = await storage.getItem<RecentlyPlayedTracksPage['items']>(HISTORY_TRACK_STORAGE_KEY);
-    console.log('Stored tracks:', storedTracks?.length);
-    const queryRange = computeCursor(storedTracks ?? []);
+    const latestScore = await getLatestPlayedAt()
+    const queryRange = latestScore
+      ? { timestamp: latestScore, type: 'after' as const }
+      : { timestamp: Date.now(), type: 'before' as const }
 
-    const latestTracks = await spotify.player.getRecentlyPlayedTracks(50, queryRange);
-    console.log('Latest tracks:', latestTracks.items.length);
+    const response = await spotify.player.getRecentlyPlayedTracks(50, queryRange)
+    const slimTracks = response.items.map(toSlimTrack)
+    const added = await addTracks(slimTracks)
 
-    const history = storedTracks ? latestTracks.items.concat(...storedTracks) : latestTracks.items;
-    await storage.setItem(HISTORY_TRACK_STORAGE_KEY, history);
-    await storage.setItem(HISTORY_LENGTH_STORAGE_KEY, history.length);
-
-    return {
-      result: {
-        size: history.length,
-      },
-    };
+    return { result: { fetched: response.items.length, added } }
   },
-});
+})
 
-function computeCursor(history: RecentlyPlayedTracksPage['items']): { timestamp: number, type: 'before' | 'after' } {
-  const lastSong = history[0];
-
-  if (!lastSong) {
-    return { timestamp: Date.now(), type: 'before' };
+function toSlimTrack(item: RecentlyPlayedTracksPage['items'][number]): SlimTrack {
+  const track = item.track
+  return {
+    id: track.id,
+    name: track.name,
+    artist: track.artists[0]?.name ?? '',
+    album: track.album.name,
+    image_url: track.album.images[0]?.url ?? '',
+    spotify_url: track.external_urls.spotify,
+    preview_url: track.preview_url ?? null,
+    played_at: item.played_at,
   }
-
-  return { timestamp: new Date(lastSong.played_at).getTime(), type: 'after' };
 }

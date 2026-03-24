@@ -31,3 +31,6 @@ data/*
 
 # Local Netlify folder
 .netlify
+
+# Migration scripts (one-shot, not for repo)
+scripts/

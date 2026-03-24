@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     strict: true,
   },
   runtimeConfig: {
+    redisUrl: 'redis://localhost:6379',
     public: {
       hostname: 'http://localhost:3000',
     },
@@ -24,34 +25,22 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'netlify',
+    preset: 'node',
     experimental: {
       tasks: true,
     },
     devStorage: {
-      spotify: {
-        driver: 'fs',
-        base: '.nuxt/.data',
-      },
       cache: {
         driver: 'memory',
       },
     },
     storage: {
-      spotify: {
-        driver: 'netlifyBlobs',
-        name: 'spotify-grid',
-        siteID: process.env.NETLIFY_SITE_ID,
-        token: process.env.NETLIFY_API_TOKEN,
-      },
       cache: {
         driver: 'memory',
-        name: 'cache',
       },
     },
     routeRules: {
       '/api/me/currently-playing-track': { cache: { maxAge: 5 } },
-      '/api/me/history': { cache: { maxAge: 60 * 15 } },
       '/api/playlists/daylist': { cache: { maxAge: 60 * 15 } },
     },
   },
