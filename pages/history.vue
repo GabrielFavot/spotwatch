@@ -1,7 +1,6 @@
 <template>
-  <div>
+  <div ref="container">
     <HistoryGrid :history-items="tracks" />
-    <div ref="sentinel" class="h-4" />
     <div
       v-if="pending"
       class="text-center py-4 text-gray-400"
@@ -20,7 +19,7 @@ const offset = ref(0)
 const tracks = ref<SlimTrack[]>([])
 const hasMore = ref(true)
 const pending = ref(false)
-const sentinel = ref<HTMLElement | null>(null)
+const container = ref<HTMLElement | null>(null)
 
 async function loadMore() {
   if (pending.value || !hasMore.value) return
@@ -40,7 +39,8 @@ async function loadMore() {
 
 await loadMore()
 
-useIntersectionObserver(sentinel, ([entry]) => {
-  if (entry?.isIntersecting) loadMore()
+useInfiniteScroll(container, loadMore, {
+  distance: 100,
+  canLoadMore: () => hasMore.value,
 })
 </script>
