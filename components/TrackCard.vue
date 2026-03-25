@@ -4,7 +4,7 @@
   >
     <div class="bg-gradient-to-b from-gray-300 to-gray-700">
       <img
-        :src="albumImageUrl"
+        :src="track.image_url"
         :alt="trackFullName"
         class="group-hover:mix-blend-multiply"
         sizes="640px md:504px lg:308 xl:295 2xl:420"
@@ -24,7 +24,7 @@
           >
         </audio>
         <a
-          :href="trackUrl"
+          :href="track.spotify_url"
           target="_blank"
           class="text-spotify-green cursor-pointer text-lg"
         >
@@ -32,7 +32,7 @@
         </a>
         <div>
           <span class="mr-3 uppercase text-xs text-gray-400">
-            {{ track.album.name }}
+            {{ track.album }}
           </span>
           <p class="text-sm font-bold text-spotify-lightgray block">
             {{ trackFullName }}
@@ -44,25 +44,23 @@
 </template>
 
 <script lang="ts" setup>
-import type { Track } from '@spotify/web-api-ts-sdk';
+import type { SlimTrack } from '~/server/types/history'
 
 const props = defineProps<{
-  track: Track
-}>();
+  track: SlimTrack
+}>()
 
-const albumImageUrl = computed(() => props.track.album.images[0].url);
 const trackFullName = computed(
-  () => `${props.track.artists[0].name} - ${props.track.name}`,
-);
-const trackUrl = computed(() => props.track.external_urls.spotify);
+  () => `${props.track.artist} - ${props.track.name}`,
+)
 
-const audioPlayer = ref<HTMLAudioElement>();
+const audioPlayer = ref<HTMLAudioElement>()
 
 const playAudio = () => {
-  audioPlayer.value?.play();
-};
+  audioPlayer.value?.play()
+}
 
 const pauseAudio = () => {
-  audioPlayer.value?.pause();
-};
+  audioPlayer.value?.pause()
+}
 </script>

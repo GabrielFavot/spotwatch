@@ -1,16 +1,26 @@
-import type { RecentlyPlayedTracksPage } from '@spotify/web-api-ts-sdk';
-import { HISTORY_TRACK_STORAGE_KEY } from '~/server/tasks/history/refresh';
+import { z } from 'zod'
+import { getTracks, getTotal } from '~/server/utils/redis'
 
-const MAX_HISTORY_ITEMS = 200;
+const querySchema = z.object({
+  offset: z.coerce.number().int().min(0).default(0),
+  limit: z.coerce.number().int().min(1).max(100).default(50),
+})
 
-export default defineEventHandler(async (_event) => {
-  const storage = useStorage('spotify');
+export default defineEventHandler(async (event) => {
+  const query = await getValidatedQuery(event, querySchema.parse)
 
-  runTask('history:refresh');
+  runTask('history:refresh')
 
-  const items = await storage.getItem<RecentlyPlayedTracksPage['items']>(HISTORY_TRACK_STORAGE_KEY, {
-    defaultValue: [],
-  });
+  const [items, total] = await Promise.all([
+    getTracks(query.offset, query.limit),
+    getTotal(),
+  ])
 
-  return items?.slice(0, MAX_HISTORY_ITEMS) ?? [];
-});
+  return {
+    items,
+    total,
+    offset: query.offset,
+    limit: query.limit,
+    hasMore: query.offset + items.length < total,
+  }
+})
