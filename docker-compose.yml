@@ -1,8 +1,6 @@
 services:
   app:
     build: .
-    expose:
-      - "3000"
     environment:
       NUXT_REDIS_URL: redis://redis:6379
       NUXT_SPOTIFY_CLIENT_ID: ${NUXT_SPOTIFY_CLIENT_ID}
