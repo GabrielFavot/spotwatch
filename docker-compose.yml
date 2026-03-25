@@ -1,0 +1,28 @@
+services:
+  app:
+    build: .
+    environment:
+      NUXT_REDIS_URL: redis://redis:6379
+      NUXT_SPOTIFY_CLIENT_ID: ${NUXT_SPOTIFY_CLIENT_ID}
+      NUXT_SPOTIFY_CLIENT_SECRET: ${NUXT_SPOTIFY_CLIENT_SECRET}
+      NUXT_SPOTIFY_REFRESH_TOKEN: ${NUXT_SPOTIFY_REFRESH_TOKEN}
+      NUXT_PUBLIC_HOSTNAME: ${NUXT_PUBLIC_HOSTNAME}
+    depends_on:
+      redis:
+        condition: service_healthy
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  redis_data:
