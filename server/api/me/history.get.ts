@@ -9,7 +9,7 @@ const querySchema = z.object({
 export default defineEventHandler(async (event) => {
   const query = await getValidatedQuery(event, querySchema.parse)
 
-  runTask('history:refresh')
+  await runTask('history:refresh')
 
   const [items, total] = await Promise.all([
     getTracks(query.offset, query.limit),
