@@ -14,10 +14,13 @@
 import type { SlimTrack } from '~/server/types/history'
 
 const LIMIT = 50
-
-const offset = ref(0)
-const tracks = ref<SlimTrack[]>([])
-const hasMore = ref(true)
+const { data: firstPage, error } = await useAsyncData('history-initial', () =>
+  $fetch('/api/me/history', { query: { offset: 0, limit: LIMIT } }),
+)
+if (error.value) throw error.value
+const tracks = ref<SlimTrack[]>(firstPage.value?.items ?? [])
+const offset = ref(tracks.value.length)
+const hasMore = ref(firstPage.value?.hasMore ?? false)
 const pending = ref(false)
 const container = ref<HTMLElement | null>(null)
 
@@ -36,8 +39,6 @@ async function loadMore() {
     pending.value = false
   }
 }
-
-await loadMore()
 
 useInfiniteScroll(container, loadMore, {
   distance: 100,
